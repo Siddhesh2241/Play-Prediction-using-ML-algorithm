@@ -1,4 +1,7 @@
 # Play Predictor Machine Learning Project
+
+![hippo](https://www.freepik.com/free-ai-image/professional-soccer-player-cartoon_187148345.htm#page=4&query=football%20gif&positiona11&from_view=keyword&track=ais_hybrid&uuid=8b36f317-6f03-43ec-9f26-370e83f421a0)
+
 This project is a Machine Learning pipeline for predicting whether to play based on weather conditions and temperature using multiple classification algorithms. It includes data exploration, preprocessing, and the implementation of various classification algorithms such as Decision Tree, K-Nearest Neighbors, Logistic Regression, Support Vector Machine, Random Forest, and Voting Classifier.
 
 ## Dataset
