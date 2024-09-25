@@ -7,7 +7,7 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.linear_model import LogisticRegression
 from sklearn.svm import SVC
-from sklearn.ensemble import RandomForestClassifier,VotingClassifier
+from sklearn.ensemble import RandomForestClassifier,VotingClassifier,BaggingClassifier,AdaBoostClassifier
 from sklearn.metrics import accuracy_score,confusion_matrix
 
 
@@ -201,8 +201,48 @@ def MLALGO():
     plt.ylabel("Predicted values")
     plt.title("Confusion matrix of voting classifier model")
     plt.show()
-
     
+    # Bagging classifier
+      
+    Bagging_clf = BaggingClassifier(estimator=DecisionTreeClassifier(),n_estimators=100,random_state=42)
+
+    Bagging_clf.fit(x_train,y_train)
+
+    train_pred = Bagging_clf.predict(x_train)
+
+    print("\nTraining Accuracy score of Bagging classifier model",accuracy_score(train_pred,y_train))
+    
+    test_pred = Bagging_clf.predict(x_test)
+    print("Testing Accuracy score of Bagging classifier model",accuracy_score(test_pred,y_test))
+    
+    plt.figure(figsize=(8,6))
+    sns.heatmap(confusion_matrix(y_test,test_pred),annot=True,cmap="Blues")
+    plt.xlabel("Actual values")
+    plt.ylabel("Predicted values")
+    plt.title("Confusion matrix of Bagging classifier model")
+    plt.show()
+
+    # Boosting Classifier
+
+    Boosting_clf = AdaBoostClassifier(estimator=DecisionTreeClassifier(),n_estimators=100,algorithm="SAMME",random_state=42)
+
+    Boosting_clf.fit(x_train,y_train)
+
+    train_pred = Boosting_clf.predict(x_train)
+
+    print("\nTraining Accuracy score of Boosting classifier model",accuracy_score(train_pred,y_train))
+    
+    test_pred = Boosting_clf.predict(x_test)
+    print("Testing Accuracy score of Boosting classifier model",accuracy_score(test_pred,y_test))
+    
+    plt.figure(figsize=(8,6))
+    sns.heatmap(confusion_matrix(y_test,test_pred),annot=True,cmap="Blues")
+    plt.xlabel("Actual values")
+    plt.ylabel("Predicted values")
+    plt.title("Confusion matrix of Boosting classifier model")
+    plt.show()
+
+
 def main():
    
    MLALGO()
